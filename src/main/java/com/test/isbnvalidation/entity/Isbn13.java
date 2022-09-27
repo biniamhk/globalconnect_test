@@ -15,7 +15,7 @@ public class Isbn13 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String isbn13;
+    private String isbn;
     private boolean valid;
 }
 
