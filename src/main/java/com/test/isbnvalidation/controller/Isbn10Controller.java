@@ -1,7 +1,6 @@
 package com.test.isbnvalidation.controller;
 
 import com.test.isbnvalidation.entity.Isbn10;
-import com.test.isbnvalidation.exception.BadRequestException;
 import com.test.isbnvalidation.service.Isbn10Service;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,12 +41,13 @@ public class Isbn10Controller {
     }
 
     @DeleteMapping("removeIsbn/{id}")
-    public ResponseEntity<String> deleteIsbn10ById(@PathVariable Long id) {
+    public ResponseEntity<String> deleteIsbn13ById(@PathVariable Long id) {
         Optional<Isbn10> foundIsbn10 = isbn10Service.findIsbnById(id);
-        if(foundIsbn10.isPresent())
-        return new ResponseEntity<>("ISBN Deleted",HttpStatus.RESET_CONTENT);
-
-        return new ResponseEntity<>("ISBN  Not found",HttpStatus.RESET_CONTENT);
+        if (foundIsbn10.isPresent()) {
+            isbn10Service.deleteById(id);
+            return new ResponseEntity<>("ISBN Deleted", HttpStatus.RESET_CONTENT);
+        }
+        return new ResponseEntity<>("ISBN  Not found", HttpStatus.RESET_CONTENT);
 
 
     }

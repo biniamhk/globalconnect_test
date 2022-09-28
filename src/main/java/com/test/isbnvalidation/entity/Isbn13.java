@@ -17,5 +17,9 @@ public class Isbn13 {
     private Long id;
     private String isbn;
     private boolean valid;
+
+    public Isbn13(String isbn) {
+        this.isbn=isbn;
+    }
 }
 

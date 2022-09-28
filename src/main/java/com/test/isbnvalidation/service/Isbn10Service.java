@@ -16,13 +16,15 @@ public class Isbn10Service {
     }
 
     public String validateAndSaveIsbn10(Isbn10 isbn10) {
-        boolean isValid = false;
+        boolean isValid;
         if (isbn10.getIsbn().length() == 10)
             isValid = validateIsbn10(isbn10.getIsbn());
         else isValid = false;
 
         isbn10.setValid(isValid);
-        if (isbn10.isValid()) {
+        if (isbn10Repository.findIsbn10ByIsbn(isbn10.getIsbn()) != null) {
+            return "Isbn10 already exist on Data Base and It is valid";
+        } else if (isbn10.isValid()) {
             isbn10Repository.save(isbn10);
             return "Isbn10 is valid so it is saved on data base";
         }
@@ -58,5 +60,9 @@ public class Isbn10Service {
 
     public Optional<Isbn10> findIsbnById(Long id) {
         return isbn10Repository.findById(id);
+    }
+
+    public void deleteById(Long id) {
+        isbn10Repository.deleteById(id);
     }
 }
