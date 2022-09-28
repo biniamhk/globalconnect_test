@@ -17,17 +17,17 @@ public class IsbnValidationApplication {
         SpringApplication.run(IsbnValidationApplication.class, args);
     }
 
+    //sample data to be saved when the program starts
     @Bean
     public CommandLineRunner setUpSampleDataBaseGenerator(
             Isbn10Repository isbn10Repository,
-            Isbn10Service isbn10Service,
             Isbn13Repository isbn13Repository) {
         return (args) -> {
-            Isbn10 isbn10 = new Isbn10("23445667");
-            Isbn13 isbn13 = new Isbn13("9780547517650");
+            Isbn10 isbn10 = new Isbn10("0972705570",true);
+            Isbn13 isbn13 = new Isbn13("9783161484100",true);
 
-            isbn10Service.validateAndSaveIsbn10(isbn10);
-            //isbn13Repository.save(isbn13);
+            isbn13Repository.save(isbn13);
+            isbn10Repository.save(isbn10);
         };
     }
 }

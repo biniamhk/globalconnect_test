@@ -1,6 +1,7 @@
 package com.test.isbnvalidation.controller;
 
 import com.test.isbnvalidation.entity.Isbn10;
+import com.test.isbnvalidation.exception.BadRequestException;
 import com.test.isbnvalidation.service.Isbn10Service;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

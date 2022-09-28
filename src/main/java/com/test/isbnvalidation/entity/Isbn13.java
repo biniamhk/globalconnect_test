@@ -18,8 +18,9 @@ public class Isbn13 {
     private String isbn;
     private boolean valid;
 
-    public Isbn13(String isbn) {
-        this.isbn=isbn;
+    public Isbn13(String isbn, boolean valid) {
+        this.isbn = isbn;
+        this.valid = valid;
     }
 }
 
