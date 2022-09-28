@@ -1,6 +1,5 @@
 installation requirement:
 Java JDK 11+ (Recommend Java 17)
-Docker latest,
 Maven latest
 MySQl
 Any IDE that support Java (Recommend Intellij)
